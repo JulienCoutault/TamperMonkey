@@ -5,6 +5,8 @@
 // @description  I'm too lazy to search the leaderbord on speedrun.com
 // @author       Programmateur01
 // @match        https://online.seterra.com/en/vgp/*
+// @updateURL    https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/src_leaderboard_link.js
+// @downloadURL  https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/src_leaderboard_link.js
 // ==/UserScript==
 
 (function() {
