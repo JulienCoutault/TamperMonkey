@@ -17,7 +17,7 @@
             async: true,
             success: function(response, status, xhr) {
                 response.data.forEach(function (level) {
-                    if (level.name === mapName) {
+                    if (level.name.replace(/([^\x00-\x7F]\s)/g, "") === mapName) {
                         srcUrl = level.weblink;
                     }
                 });
