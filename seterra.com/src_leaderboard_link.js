@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Seterra to Speedrun.com
-// @version      1.2
+// @version      1.3
 // @namespace    https://github.com/JulienCoutault/TamperMonkey
 // @description  I'm too lazy to search the leaderbord on speedrun.com
 // @author       Programmateur01
