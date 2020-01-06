@@ -42,7 +42,7 @@
     
     $.when(__searchInLevels(mapName), __searchInCategories(mapName)).done(function() {
         let leaderboardLink = '<div style="font-size: 12px; margin-top: 15px; text-align: center; background-color: #0F7A4D; border-radius: 20px; padding: 15px; padding-top: 15px; padding-bottom: 20px; border: solid 1px #cccccc; width: 160px;">' +
-                '<a href=' + srcUrl + '" target="_blank" style="color: white"><center><img src="https://www.speedrun.com/images/trophy.png" style="width:60px;"></center><br>' + mapName + ' Leaderboard</a>' +
+                '<a href="' + srcUrl + '" target="_blank" style="color: white"><center><img src="https://www.speedrun.com/images/trophy.png" style="width:60px;"></center><br>' + mapName + ' Leaderboard</a>' +
             '</div>';
         $('#rtcol').append(leaderboardLink);
     });
