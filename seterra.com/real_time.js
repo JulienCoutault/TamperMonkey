@@ -1,12 +1,10 @@
 // ==UserScript==
 // @name         Seterra real time
-// @version      1.0
+// @version      1.1
 // @namespace    https://github.com/JulienCoutault/TamperMonkey
 // @description  We want the real time !
 // @author       Programmateur01
 // @match        https://online.seterra.com/en/vgp/*
-// @updateURL    https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/real_time.js
-// @downloadURL  https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/real_time.js
 // ==/UserScript==
 
 (function() {
@@ -22,9 +20,9 @@
         seconds = seconds.toString();
         seconds = pad.substring(0, pad.length - seconds.length) + seconds;
         let cseconds = csec.toString();
-        cseconds = pad.substring(0, pad.length - cseconds.length) + cseconds;
+        cseconds = pad.substring(0, 3 - cseconds.length) + cseconds;
 
-        return minutes + ":" + seconds + '.' + csec;
+        return minutes + ":" + seconds + '.' + cseconds;
     }
 
 
