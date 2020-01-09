@@ -5,6 +5,8 @@
 // @description  We want the real time !
 // @author       Programmateur01
 // @match        https://online.seterra.com/en/vgp/*
+// @updateURL    https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/real_time.js
+// @downloadURL  https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/real_time.js
 // ==/UserScript==
 
 (function() {
