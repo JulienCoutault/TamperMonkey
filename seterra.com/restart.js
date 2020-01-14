@@ -5,7 +5,8 @@
 // @description  Restart the game use F5
 // @author       Programmateur01
 // @match        https://online.seterra.com/*/*/*
-
+// @updateURL    https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/restart.js
+// @downloadURL  https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/restart.js
 // ==/UserScript==
 
 (function() {
