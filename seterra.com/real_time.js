@@ -1,10 +1,13 @@
 // ==UserScript==
 // @name         Seterra real time
-// @version      1.1
+// @version      1.2
 // @namespace    https://github.com/JulienCoutault/TamperMonkey
 // @description  We want the real time !
 // @author       Programmateur01
-// @match        https://online.seterra.com/en/vgp/*
+// @match        https://online.seterra.com/*/*/*
+// @match        https://online.seterra.com/*/*/*?*
+// @match        http://onlinebeta.seterra.com/*/*/*
+// @match        http://onlinebeta.seterra.com/*/*/*?*
 // @updateURL    https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/real_time.js
 // @downloadURL  https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/real_time.js
 // ==/UserScript==
