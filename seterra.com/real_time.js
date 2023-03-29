@@ -4,10 +4,8 @@
 // @namespace    https://github.com/JulienCoutault/TamperMonkey
 // @description  We want the real time !
 // @author       Programmateur01
-// @match        https://online.seterra.com/*/*/*
-// @match        https://online.seterra.com/*/*/*?*
-// @match        http://onlinebeta.seterra.com/*/*/*
-// @match        http://onlinebeta.seterra.com/*/*/*?*
+// @match        https://www.geoguessr.com/seterra/*/*/*
+// @match        https://www.geoguessr.com/seterra/*/*/*?*
 // @updateURL    https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/real_time.js
 // @downloadURL  https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/real_time.js
 // ==/UserScript==
