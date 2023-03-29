@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Seterra real time
-// @version      1.2
+// @version      1.3
 // @namespace    https://github.com/JulienCoutault/TamperMonkey
 // @description  We want the real time !
 // @author       Programmateur01
