@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Seterra Top 100
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.0.1
 // @description  Show Seterra Times outside of Top 5
 // @author       _SS, Programmateur01
 // @match        https://www.geoguessr.com/seterra/*/*/*
