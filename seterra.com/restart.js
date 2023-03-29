@@ -4,10 +4,8 @@
 // @version      1.1
 // @description  Restart the game use F5
 // @author       Programmateur01
-// @match        https://online.seterra.com/*/*/*
-// @match        https://online.seterra.com/*/*/*?*
-// @match        http://onlinebeta.seterra.com/*/*/*
-// @match        http://onlinebeta.seterra.com/*/*/*?*
+// @match        https://www.geoguessr.com/seterra/*/*/*
+// @match        https://www.geoguessr.com/seterra/*/*/*?*
 // @updateURL    https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/restart.js
 // @downloadURL  https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/restart.js
 // ==/UserScript==
