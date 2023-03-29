@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Seterra Restart game
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Restart the game use F5
 // @author       Programmateur01
 // @match        https://www.geoguessr.com/seterra/*/*/*
