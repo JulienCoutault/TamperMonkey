@@ -4,10 +4,8 @@
 // @version      1.0
 // @description  Show Seterra Times outside of Top 5
 // @author       _SS, Programmateur01
-// @match        https://online.seterra.com/*/*/*
-// @match        https://online.seterra.com/*/*/*?*
-// @match        http://onlinebeta.seterra.com/*/*/*
-// @match        http://onlinebeta.seterra.com/*/*/*?*
+// @match        https://www.geoguessr.com/seterra/*/*/*
+// @match        https://www.geoguessr.com/seterra/*/*/*?*
 // @updateURL    https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/top100.js
 // @downloadURL  https://raw.githubusercontent.com/JulienCoutault/TamperMonkey/master/seterra.com/top100.js
 // ==/UserScript==
