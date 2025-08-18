@@ -2,7 +2,7 @@
 
 List of personnal scripts
 
-## Eurobilltracker.com
+## [Eurobilltracker.com](https://eurobilltracker.com)
 
-## Seterra.com
+## [Seterra.com](https://seterra.com)
 
