@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         EBT pages enhancement
-// @namespace    http://tampermonkey.net/
-// @version      0.1.1
+// @name         EBT++
+// @namespace    https://github.com/JulienCoutault/TamperMonkey
+// @version      0.2.0
 // @description  EBT pages enhancement
 // @author       Programmateur01
 // @match        *.eurobilltracker.com/*
@@ -17,13 +17,15 @@ const translations = {
         'average.wanted' : 'average wanted',
         'average.fail' : 'You cannot achieve an average value of {average} € with {value} € notes.',
         'average.result' : 'You need to encode {notes} notes of {value} € to reach an average value of {average} €.',
-        'notes': 'notes',
     },
     'fr': {
         'average.wanted' : 'moyenne souhaitée',
         'average.fail' : 'Vous ne pouvez pas atteindre une valeur moyenne de {average} € avec des billets de {value} €.',
         'average.result' : 'Vous devez encoder {notes} billets de {value} € pour atteindre une valeur moyenne de {average} €.',
+        'new': 'nouveaux',
         'notes': 'billets',
+        'sort': 'tri',
+        'time': 'temps',
     }
 }
 
@@ -110,7 +112,6 @@ function __getUserData() {
 function __addAverageForm(user) {
     // An nice idea from Trezay
     let divs = Array.from(document.getElementsByClassName('profileItem'));
-    console.log(divs[user.html.profileItem.note_value_average]);
 
     function createDivInput(user) {
         // Create div for input
@@ -164,7 +165,6 @@ function __addAverageForm(user) {
             const option = document.createElement("option");
             option.value = value.toString();
             option.textContent = option.value;
-            option.style = `background-color: 000`;
             select.appendChild(option);
         });
 
@@ -220,6 +220,61 @@ function _loadProfileUser(id) {
 }
 // END User Profile
 
+// START Hits list
+function __addSelectSort(url_params) {
+    const form = document.querySelector('[name="filter"]');
+    function createSelectDiv(url_params) {
+        // 
+        const td = document.createElement("td");
+        td.classList.add('top')
+
+        // label
+        const label = document.createElement("label");
+        label.textContent = `${ucfirst(get_text('sort'))} `;
+        label.setAttribute("for", "hitsort");
+
+        // select
+        const select = document.createElement("select");
+        select.name = "hitsort";
+        select.id = "hitsort-select";
+        select.onchange = () => form.submit();
+
+        
+
+        // options
+        [
+            ['',  ucfirst(get_text('new'))],
+            ['days', ucfirst(get_text('time'))],
+            ['km', ucfirst(get_text('distance'))],
+        ].forEach(value => {
+            const option = document.createElement("option");
+            option.value = value[0];
+            option.textContent = value[1];
+            select.appendChild(option);
+        });
+
+        // set selected value
+        if (select.name in url_params) {
+            select.value = url_params[select.name];
+        }
+
+        td.appendChild(label);
+        td.appendChild(select);
+
+        return td;
+    }
+
+    const div = createSelectDiv(url_params);
+    const lastTd = form.querySelector('td:last-of-type');
+    lastTd.parentNode.insertBefore(div, lastTd.nextSibling);
+    // lastTd.insertAfter(div);
+}
+
+function _loadHitsList(url_params) {
+    __addSelectSort(url_params);
+}
+// END Hits list
+
 (function() {
     const url = new URL(window.location);
     const url_params = Object.fromEntries(url.searchParams.entries());
@@ -230,6 +285,10 @@ function _loadProfileUser(id) {
                 if ('user' in url_params) {
                     _loadProfileUser(url_params.user)
                 }
+            break;
+        case '/my_hits/': // profile hits
+        case '/hits/':    // general hits
+            _loadHitsList(url_params)
             break;
     }
 })();
