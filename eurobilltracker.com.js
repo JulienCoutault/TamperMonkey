@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EBT pages enhancement
 // @namespace    http://tampermonkey.net/
-// @version      0.1.0
+// @version      0.1.1
 // @description  EBT pages enhancement
 // @author       Programmateur01
 // @match        *.eurobilltracker.com/*
@@ -74,8 +74,11 @@ function __getUserData() {
         user.hit_ratio = parseFloat(divs[curr++].innerText.trim().split(":")[2].replace(_reg_number, ''));
     }
 
-    console.log(divs[curr].innerText)
-    console.log(/href="\/profile\/\?user=\d+.*allcommon=1"/.test(divs[curr].innerHTML))
+    if (/href="\/my_hits\/\?find=user/.test(divs[curr].innerHTML)) {
+        // if you have hit in common
+        curr++; // skip the div
+    }
+
     if (/href="\/profile\/\?user=\d+.*allcommon=1"/.test(divs[curr].innerHTML)) {
         // if you have hitpartener in common
         curr++; // skip the div
