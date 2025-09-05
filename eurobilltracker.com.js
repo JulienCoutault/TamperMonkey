@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EBT++
 // @namespace    https://github.com/JulienCoutault/TamperMonkey
-// @version      0.2.0
+// @version      0.2.1
 // @description  EBT pages enhancement
 // @author       Programmateur01
 // @match        *.eurobilltracker.com/*
@@ -194,13 +194,24 @@ function __addAverageForm(user) {
 
     // add events
     function compute() {
-        const targetAverage = parseFloat(document.getElementById('input-average').value)
-        const selectedValue = parseInt(document.getElementById('select-note').value, 10)
-        const targetNotes = Math.ceil((targetAverage * user.notes - user.note_value) / (selectedValue - targetAverage));
-        if (targetNotes < 0) {
-            document.getElementById('average-result').innerText = get_text('average.fail', {value: selectedValue, average: targetAverage});
+        const selectedValue = parseInt(document.getElementById('select-note').value, 10);
+        const selectedAverage = parseFloat(document.getElementById('input-average').value);
+        let targetAverage;
+        
+        // special case because ebt round average to 2 decimals
+        if (user.note_value_average < selectedAverage) {
+            targetAverage = selectedAverage - 0.005;
         } else {
-            document.getElementById('average-result').innerText = get_text('average.result', {notes: targetNotes, value: selectedValue, average: targetAverage});
+            targetAverage = selectedAverage + 0.004;
+        }
+        console.log(`targetAverage=${targetAverage}, selectedValue=${selectedValue}, user.notes=${user.notes}, user.note_value=${user.note_value}`);
+
+        let targetNotes = Math.ceil((targetAverage * user.notes - user.note_value) / (selectedValue - targetAverage));
+
+        if (targetNotes < 0) {
+            document.getElementById('average-result').innerText = get_text('average.fail', {value: selectedValue, average: selectedAverage});
+        } else {
+            document.getElementById('average-result').innerText = get_text('average.result', {notes: targetNotes, value: selectedValue, average: selectedAverage});
         }
     }
     document.getElementById('input-average').addEventListener("input", (e) => {
