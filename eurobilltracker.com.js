@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EBT++
 // @namespace    https://github.com/JulienCoutault/TamperMonkey
-// @version      0.2.1
+// @version      0.2.2
 // @description  EBT pages enhancement
 // @author       Programmateur01
 // @match        *.eurobilltracker.com/*
@@ -250,8 +250,6 @@ function __addSelectSort(url_params) {
         select.id = "hitsort-select";
         select.onchange = () => form.submit();
 
-        
-
         // options
         [
             ['',  ucfirst(get_text('new'))],
@@ -281,8 +279,18 @@ function __addSelectSort(url_params) {
     // lastTd.insertAfter(div);
 }
 
+function __updateHitClassSelect(url_params) {
+    const selectEl = document.querySelector('select[name="hitclass"]');
+
+    // add options for 6+ hits
+    selectEl.add(new Option(ucfirst(get_text('Sextuple') + ' hits'), '5'));
+    selectEl.add(new Option(ucfirst(get_text('Septuple') + ' hits'), '6'));
+    selectEl.add(new Option(ucfirst(get_text('Octuple') + ' hits'), '7'));
+}
+
 function _loadHitsList(url_params) {
     __addSelectSort(url_params);
+    __updateHitClassSelect(url_params);
 }
 // END Hits list
 
