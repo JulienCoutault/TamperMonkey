@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EBT++
 // @namespace    https://github.com/JulienCoutault/TamperMonkey
-// @version      0.2.4
+// @version      0.2.5
 // @description  EBT pages enhancement
 // @author       Programmateur01
 // @match        *.eurobilltracker.com/*
@@ -304,12 +304,13 @@ function _loadHitsList(url_params) {
     // Convert `;` into `&` so URLSearchParams can read it
     const params = new URLSearchParams(url.search.replace(/;/g, '&'));
     const url_params = Object.fromEntries(params.entries());
+    console.log(url_params);
     _lang = url.host.split('.')[0];
 
     switch (url.pathname) {
         case '/profile/':
                 if ('user' in url_params) {
-                    if (!'tab' in url_params || url_params['tab'] == '0') {
+                    if (!('tab' in url_params) || url_params['tab'] == '0') {
                         _loadProfileUser(url_params.user)
                     } else if (url_params['tab'] == '2') {
                         _loadHitsList(url_params);
@@ -317,12 +318,12 @@ function _loadHitsList(url_params) {
                 }
             break;
         case '/my_hits/': // profile hits
-            if (!'tab' in url_params || url_params['tab'] == '0') {
+            if (!('tab' in url_params) || url_params['tab'] == '0') {
                 _loadHitsList(url_params);
             }
             break;
         case '/hits/':    // general hits
-            if (!'tab' in url_params || url_params['tab'] == '0') {
+            if (!('tab' in url_params) || url_params['tab'] == '0') {
                 _loadHitsList(url_params);
             }
             break;
