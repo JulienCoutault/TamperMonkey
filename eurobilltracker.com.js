@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         EBT++
 // @namespace    https://github.com/JulienCoutault/TamperMonkey
-// @version      0.2.3
+// @version      0.2.4
 // @description  EBT pages enhancement
 // @author       Programmateur01
 // @match        *.eurobilltracker.com/*
@@ -33,12 +33,12 @@ function get_text(key, params = {}) {
     let text;
 
     if (key in translations[_lang]) {
-      text = translations[_lang][key];
+        text = translations[_lang][key];
     } else if (key in translations['en']) {
         // display english by default
-      text = translations['en'][key];
+        text = translations['en'][key];
     } else {
-      text = key; // fallback: return the key itself if missing
+        text = key; // fallback: return the key itself if missing
     }
     
     // put params
@@ -52,7 +52,7 @@ function get_text(key, params = {}) {
 function ucfirst(str) {
     if (!str) return "";
     return str.charAt(0).toUpperCase() + str.slice(1);
-  }
+}
 
 // START User Profile
 function __getUserData() {
@@ -301,18 +301,30 @@ function _loadHitsList(url_params) {
 
 (function() {
     const url = new URL(window.location);
-    const url_params = Object.fromEntries(url.searchParams.entries());
+    // Convert `;` into `&` so URLSearchParams can read it
+    const params = new URLSearchParams(url.search.replace(/;/g, '&'));
+    const url_params = Object.fromEntries(params.entries());
     _lang = url.host.split('.')[0];
 
     switch (url.pathname) {
         case '/profile/':
                 if ('user' in url_params) {
-                    _loadProfileUser(url_params.user)
+                    if (!'tab' in url_params || url_params['tab'] == '0') {
+                        _loadProfileUser(url_params.user)
+                    } else if (url_params['tab'] == '2') {
+                        _loadHitsList(url_params);
+                    }
                 }
             break;
         case '/my_hits/': // profile hits
+            if (!'tab' in url_params || url_params['tab'] == '0') {
+                _loadHitsList(url_params);
+            }
+            break;
         case '/hits/':    // general hits
-            _loadHitsList(url_params)
+            if (!'tab' in url_params || url_params['tab'] == '0') {
+                _loadHitsList(url_params);
+            }
             break;
     }
 })();
